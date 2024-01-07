@@ -1,2 +1,2 @@
 # poc-apollo-v4-graphql
-Small POC on graphql API
+A well-defined GraphQL API using Apollo Server 4
