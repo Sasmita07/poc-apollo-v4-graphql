@@ -1,0 +1,33 @@
+{
+  "name": "poc-apollo-v4-graphql",
+  "version": "1.0.0",
+  "description": "A well-defined GraphQL Modules API using Apollo Server 4",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node --experimental-specifier-resolution=node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sasmita07/poc-apollo-v4-graphql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sasmita07/poc-apollo-v4-graphql/issues"
+  },
+  "homepage": "https://github.com/Sasmita07/poc-apollo-v4-graphql#readme",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "axios": "^1.6.5",
+    "graphql": "^16.8.1",
+    "graphql-modules": "^2.3.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.10.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
