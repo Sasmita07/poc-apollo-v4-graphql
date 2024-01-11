@@ -1,11 +1,14 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
+import { axiosAdapter } from '../adapters/axios-adapter/axios.adapter';
 
-export const getProductCatalogIntegration = async (
-  config: AxiosRequestConfig
-) => {
+export const getProductCatalogIntegration = async () => {
   try {
-    const { data } = await axios.request(config);
-    return data;
+    const config: AxiosRequestConfig = {
+      url: 'https://fakestoreapi.com/products',
+      method: 'GET',
+    };
+    const productCatalogResponse = await axiosAdapter(config);
+    return productCatalogResponse;
   } catch (err) {
     throw err;
   }

@@ -1,15 +1,13 @@
-// TO DO: Enable SDL
+type Query {
+  "Get an overview on existing products"
+  products: [Product]
+}
 
-# type Query {
-#   "Get an overview on existing products"
-#   products: [Product]
-# }
-
-# "A product overview on a specific category"
-# type Product {
-#   id: ID!
-#   title: String
-#   description: String
-#   category: String
-#   Price: Float
-# }
+"A product overview on a specific category"
+type Product {
+  id: ID!
+  title: String
+  description: String
+  category: String
+  Price: Float
+}
