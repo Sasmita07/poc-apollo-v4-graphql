@@ -12,7 +12,5 @@ export const productCatalogModule = createModule({
       )
     ),
   ],
-  resolvers: {
-    Query: productCatalogResolvers,
-  },
+  resolvers: productCatalogResolvers,
 });
