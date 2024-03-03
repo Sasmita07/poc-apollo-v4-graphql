@@ -1,0 +1,13 @@
+# This configuration file tells GraphQL Code Generator how to generate types based on our schema.
+schema: './src/modules/**/schemas/*.graphql'
+generates:
+  # Specify where our generated types should live.
+  ./src/__generated__/resolvers-types.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+  ./src/modules/:
+    preset: 'graphql-modules'
+    presetConfig:
+      baseTypesPath: '../__generated__/resolvers-types.ts'
+      filename: '__generated__/module-types.ts'
