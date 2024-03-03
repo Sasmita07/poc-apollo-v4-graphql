@@ -3,6 +3,7 @@ import axios, {
   AxiosResponse,
   HttpStatusCode,
 } from 'axios';
+import { DEVELOPER_ERROR_MESSAGES } from '../utils/constants/adapter.constant';
 
 export const axiosAdapter = async (config: AxiosRequestConfig) => {
   try {
@@ -11,9 +12,9 @@ export const axiosAdapter = async (config: AxiosRequestConfig) => {
   } catch (err) {
     if (axios.isAxiosError(err)) {
       if (err.response?.status === HttpStatusCode.NotFound) {
-        throw new Error('Data not available');
+        throw new Error(DEVELOPER_ERROR_MESSAGES.DATA_NOT_FOUND);
       }
-      throw new Error('Something went wrong');
+      throw new Error(DEVELOPER_ERROR_MESSAGES.SERVER_ERROR);
     }
     throw err;
   }
