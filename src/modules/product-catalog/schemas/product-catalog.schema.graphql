@@ -9,5 +9,5 @@ type Product {
   title: String
   description: String
   category: String
-  Price: Float
+  price: String
 }

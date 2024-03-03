@@ -1,3 +1,5 @@
+import { currencyFormatter } from '../../../utils/app.util';
+
 export const getProductCatalogResponseToProducts = (results: any) => {
   return results.map((result: any) => {
     return {
@@ -5,7 +7,7 @@ export const getProductCatalogResponseToProducts = (results: any) => {
       title: result.title,
       description: result.description,
       category: result.category,
-      price: result.price,
+      price: currencyFormatter(result.price),
     };
   });
 };
