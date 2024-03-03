@@ -1,5 +1,4 @@
-/* eslint-disable */
-import * as Types from "../../../__generated-types__/graphql";
+import * as Types from "../../../__generated__/resolvers-types";
 import * as gm from "graphql-modules";
 export namespace ProductCatalogModule {
   interface DefinedFields {

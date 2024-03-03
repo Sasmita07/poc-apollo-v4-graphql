@@ -4,10 +4,10 @@
   "description": "A well-defined GraphQL Modules API using Apollo Server 4",
   "type": "module",
   "scripts": {
-    "start": "npm run compile && node --experimental-specifier-resolution=node dist/src/server.js",
+    "start": "npm run compile && node --experimental-specifier-resolution=node dist/server.js",
     "compile": "npm run graphql-types-generate && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "graphql-types-generate": "graphql-codegen"
+    "graphql-types-generate": "graphql-codegen --config codegen.yml"
   },
   "repository": {
     "type": "git",
