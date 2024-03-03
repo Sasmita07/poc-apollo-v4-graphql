@@ -4,7 +4,7 @@ import * as gm from "graphql-modules";
 export namespace ProductCatalogModule {
   interface DefinedFields {
     Query: 'products';
-    Product: 'id' | 'title' | 'description' | 'category' | 'Price';
+    Product: 'id' | 'title' | 'description' | 'category' | 'price';
   };
   
   export type Query = Pick<Types.Query, DefinedFields['Query']>;
@@ -32,7 +32,7 @@ export namespace ProductCatalogModule {
       title?: gm.Middleware[];
       description?: gm.Middleware[];
       category?: gm.Middleware[];
-      Price?: gm.Middleware[];
+      price?: gm.Middleware[];
     };
   };
 }
