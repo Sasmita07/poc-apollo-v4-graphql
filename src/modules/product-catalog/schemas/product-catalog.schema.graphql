@@ -1,13 +1,25 @@
 type Query {
   "Get an overview on existing products"
   products: [Product]
+
+  "Fetch a specific product"
+  product("provided by an id" id: ID!): Product
 }
 
 "A product overview on a specific category"
 type Product {
+  "The ID for the product"
   id: ID!
+
+  "The title of the product"
   title: String
+
+  "Describes the product"
   description: String
+
+  "The category of the product"
   category: String
+
+  "The price of the product"
   price: String
 }
