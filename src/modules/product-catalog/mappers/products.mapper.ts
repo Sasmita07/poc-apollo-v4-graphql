@@ -11,3 +11,13 @@ export const getProductCatalogResponseToProducts = (results: any) => {
     };
   });
 };
+
+export const getProductByIdResponseToProduct = (result: any) => {
+  return {
+    id: result.id,
+    title: result.title,
+    description: result.description,
+    category: result.category,
+    price: currencyFormatter(result.price),
+  };
+};

@@ -2,7 +2,7 @@ import * as Types from "../../../__generated__/resolvers-types";
 import * as gm from "graphql-modules";
 export namespace ProductCatalogModule {
   interface DefinedFields {
-    Query: 'products';
+    Query: 'products' | 'product';
     Product: 'id' | 'title' | 'description' | 'category' | 'price';
   };
   
@@ -24,6 +24,7 @@ export namespace ProductCatalogModule {
     Query?: {
       '*'?: gm.Middleware[];
       products?: gm.Middleware[];
+      product?: gm.Middleware[];
     };
     Product?: {
       '*'?: gm.Middleware[];

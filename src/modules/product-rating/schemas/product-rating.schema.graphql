@@ -1,0 +1,13 @@
+extend type Query {
+  "Get rating overview on existing product"
+  rating("provided by a product id" productId: ID!): Rating
+}
+
+"A rating overview of a specific product"
+type Rating {
+  "The average rating of the product"
+  rate: Float
+
+  "The rating count"
+  count: Int
+}

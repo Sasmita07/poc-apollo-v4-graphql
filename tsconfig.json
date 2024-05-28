@@ -4,7 +4,6 @@
   "exclude": ["node_modules", "**/*.spec.ts"],
   "compilerOptions": {
     "rootDirs": ["src"],
-    "baseUrl": "./src",
     "outDir": "dist",
     "lib": ["esnext"],
     "target": "es2020",

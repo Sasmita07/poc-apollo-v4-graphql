@@ -6,6 +6,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -18,17 +19,45 @@ export type Scalars = {
 /** A product overview on a specific category */
 export type Product = {
   __typename?: 'Product';
+  /** The category of the product */
   category?: Maybe<Scalars['String']['output']>;
+  /** Describes the product */
   description?: Maybe<Scalars['String']['output']>;
+  /** The ID for the product */
   id: Scalars['ID']['output'];
+  /** The price of the product */
   price?: Maybe<Scalars['String']['output']>;
+  /** The title of the product */
   title?: Maybe<Scalars['String']['output']>;
 };
 
 export type Query = {
   __typename?: 'Query';
+  /** Fetch a specific product */
+  product?: Maybe<Product>;
   /** Get an overview on existing products */
   products?: Maybe<Array<Maybe<Product>>>;
+  /** Get rating overview on existing product */
+  rating?: Maybe<Rating>;
+};
+
+
+export type QueryProductArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryRatingArgs = {
+  productId: Scalars['ID']['input'];
+};
+
+/** A rating overview of a specific product */
+export type Rating = {
+  __typename?: 'Rating';
+  /** The rating count */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The average rating of the product */
+  rate?: Maybe<Scalars['Float']['output']>;
 };
 
 
@@ -103,18 +132,24 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Product: ResolverTypeWrapper<Product>;
   Query: ResolverTypeWrapper<{}>;
+  Rating: ResolverTypeWrapper<Rating>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
+  Float: Scalars['Float']['output'];
   ID: Scalars['ID']['output'];
+  Int: Scalars['Int']['output'];
   Product: Product;
   Query: {};
+  Rating: Rating;
   String: Scalars['String']['output'];
 };
 
@@ -128,11 +163,20 @@ export type ProductResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  product?: Resolver<Maybe<ResolversTypes['Product']>, ParentType, ContextType, RequireFields<QueryProductArgs, 'id'>>;
   products?: Resolver<Maybe<Array<Maybe<ResolversTypes['Product']>>>, ParentType, ContextType>;
+  rating?: Resolver<Maybe<ResolversTypes['Rating']>, ParentType, ContextType, RequireFields<QueryRatingArgs, 'productId'>>;
+};
+
+export type RatingResolvers<ContextType = any, ParentType extends ResolversParentTypes['Rating'] = ResolversParentTypes['Rating']> = {
+  count?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  rate?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Product?: ProductResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Rating?: RatingResolvers<ContextType>;
 };
 
